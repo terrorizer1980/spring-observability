@@ -21,7 +21,7 @@
 		<readme.class.path>maven.compile.classpath</readme.class.path>
 
 		<!-- Script -->
-		<jackson-databind.version>2.12.3</jackson-databind.version>
+		<jackson-databind.version>2.13.2</jackson-databind.version>
 		<commons-logging.version>1.2</commons-logging.version>
 	</properties>
 	<dependencies>
@@ -334,8 +334,7 @@
 										<path id="readme.class.path">
 											<pathelement location="${readme.main.classpath}"/>
 										</path>
-										<java classname="org.springframework.observability.internal.asciidoctor.ReadmeMain"
-											  failonerror="yes" classpathref="${readme.class.path}">
+										<java classname="org.springframework.observability.internal.asciidoctor.ReadmeMain" failonerror="yes" classpathref="${readme.class.path}">
 											<!-- Input -->
 											<arg value="${project.basedir}/src/main/asciidoc/README.adoc"/>
 											<!-- Output -->
@@ -352,15 +351,12 @@
 								</goals>
 								<configuration>
 									<target>
-										<fileset id="unresolved.file" dir="${basedir}/target/generated-docs/"
-												 includes="**/*.html">
+										<fileset id="unresolved.file" dir="${basedir}/target/generated-docs/" includes="**/*.html">
 											<contains text="Unresolved"/>
 										</fileset>
 										<fail message="[Unresolved] Found...failing">
 											<condition>
-												<resourcecount when="greater"
-															   count="0"
-															   refid="unresolved.file"/>
+												<resourcecount when="greater" count="0" refid="unresolved.file"/>
 											</condition>
 										</fail>
 									</target>
@@ -374,8 +370,7 @@
 								</goals>
 								<configuration>
 									<target>
-										<zip
-												destfile="${project.build.directory}/${project.artifactId}-${revision}.zip">
+										<zip destfile="${project.build.directory}/${project.artifactId}-${revision}.zip">
 											<fileset dir="${project.build.directory}/generated-docs"/>
 										</zip>
 									</target>
@@ -393,22 +388,14 @@
 										<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
 										<taskdef name="stringutil" classname="ise.antelope.tasks.StringUtilTask"/>
 										<var name="version-type" value="${revision}"/>
-										<propertyregex property="version-type" override="true"
-													   input="${version-type}" regexp=".*\.(.*)" replace="\1"/>
-										<propertyregex property="version-type" override="true"
-													   input="${version-type}" regexp="(M)\d+" replace="MILESTONE"/>
-										<propertyregex property="version-type" override="true"
-													   input="${version-type}" regexp="(RC)\d+"
-													   replace="MILESTONE"/>
-										<propertyregex property="version-type" override="true"
-													   input="${version-type}" regexp="BUILD-(.*)"
-													   replace="SNAPSHOT"/>
+										<propertyregex property="version-type" override="true" input="${version-type}" regexp=".*\.(.*)" replace="\1"/>
+										<propertyregex property="version-type" override="true" input="${version-type}" regexp="(M)\d+" replace="MILESTONE"/>
+										<propertyregex property="version-type" override="true" input="${version-type}" regexp="(RC)\d+" replace="MILESTONE"/>
+										<propertyregex property="version-type" override="true" input="${version-type}" regexp="BUILD-(.*)" replace="SNAPSHOT"/>
 										<stringutil string="${version-type}" property="spring-cloud-repo">
 											<lowercase/>
 										</stringutil>
-										<propertyregex property="git.branch" override="true"
-													   input="${git.branch}" regexp="origin/(.*)"
-													   replace="\1"/>
+										<propertyregex property="git.branch" override="true" input="${git.branch}" regexp="origin/(.*)" replace="\1"/>
 										<var name="github-tag" value="${git.branch}"/>
 									</target>
 								</configuration>

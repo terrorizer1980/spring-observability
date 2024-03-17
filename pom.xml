@@ -28,7 +28,7 @@
 		<javadoc.failOnWarnings>true</javadoc.failOnWarnings>
 
 		<!-- Use as few imports as possible so as not to have cycles -->
-		<spring.version>5.3.8</spring.version>
+		<spring.version>5.3.33</spring.version>
 
 		<!-- Production dependencies -->
 		<jsr305.version>3.0.2</jsr305.version>

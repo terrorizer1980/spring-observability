@@ -42,7 +42,7 @@
 		<asciidoctorj-pdf.version>1.6.0</asciidoctorj-pdf.version>
 		<asciidoctorj-diagram.version>2.1.2</asciidoctorj-diagram.version>
 		<revision>${project.version}</revision>
-		<asciidoctorj.version>2.5.1</asciidoctorj.version>
+		<asciidoctorj.version>2.5.4</asciidoctorj.version>
 		<jruby-complete.version>9.2.19.0</jruby-complete.version>
 
 		<!-- Sonar -->
